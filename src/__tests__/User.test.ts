@@ -12,8 +12,8 @@ describe("Users", () => {
     it("Should be able to create a new user", async() => {
         const response = await request(app).post("/users")
         .send({
-            email: "user@nada.com",
-            name: "User nada"
+            email: "testerr@test.com",
+            name: "testerrr test"
         });
         expect(response.status).toBe(201);
     })
@@ -21,10 +21,11 @@ describe("Users", () => {
     it("Should not be able to create a new user with exists email", async() => {
         const response = await request(app).post("/users")
         .send({
-            email: "user@nada.com",
-            name: "User nada"
+            email: "testuserrr@test.com",
+            name: "Userrr teste firtst"
         });
         expect(response.status).toBe(400);
+        expect(response.body).toHaveProperty("id");
     })
 
 });
